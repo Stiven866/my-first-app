@@ -5,13 +5,32 @@ import Users from './users/Users';
 
 
 class App extends Component {
-  
+  state={
+    name:'tehcsith'
+  }
 
+  changeName=(newName)=>{
+    this.setState({
+        name:newName,
+    });
+  }
+  changeNameFromInput=(event)=>{
+    this.setState({
+        name:event.target.value,
+    });
+  }
   render() {
     
     return (
       <div className="App">
-        <Users title="Lista de usuarios" age/>
+      <br/>
+      <br/>
+      <button onClick={()=>this.changeName("hola")}>change state</button>
+      <button onClick={this.changeName.bind(this,'asdhghjasdj')}>change state</button>
+      <br/>
+      <br/>
+      <input type="text" onChange={this.changeNameFromInput} value={this.state.name}/>
+      <div>{this.state.name}</div>
       </div>
     );
   }
